@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loan Payment Checklist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f9f9f9" />
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }function saveCheckboxState() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((box, i) => {
+    localStorage.setItem('checkbox_' + i, box.checked);
+  });
+}
+
+function loadCheckboxState() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((box, i) => {
+    box.checked = localStorage.getItem('checkbox_' + i) === 'true';
+  });
+}
+
+function addLoanSection() {
+  const name = prompt('Loan Name:');
+  const amount = prompt('Monthly Amount (₱):');
+  const months = prompt('Number of Months:');
+
+  if (!name || !amount || !months) return;
+
+  const container = document.getElementById('loan-container');
+  const table = document.createElement('table');
+  table.innerHTML = `<h2>${name}</h2>
+    <tr><th>Month</th><th>Amount</th><th>Paid</th></tr>`;
+  for (let i = 1; i <= parseInt(months); i++) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>Month ${i}</td><td>₱${amount}</td><td><input type="checkbox"></td>`;
+    table.appendChild(row);
+  }
+  container.appendChild(table);
+  saveCheckboxState();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadCheckboxState();
+  document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+    box.addEventListener('change', saveCheckboxState);
+  });
+});
+
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #ddd;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Loan Payment Checklist</h1>
+  <button onclick="addLoanSection()">➕ Add New Loan</button>  <div id="loan-container">
+    <h2>Father – ₱5,000 (3 Months)</h2>
+    <table>
+      <tr><th>Month</th><th>Amount</th><th>Paid</th></tr>
+      <tr><td>Month 1</td><td>₱1,966.67</td><td><input type="checkbox"></td></tr>
+      <tr><td>Month 2</td><td>₱1,966.67</td><td><input type="checkbox"></td></tr>
+      <tr><td>Month 3</td><td>₱1,966.67</td><td><input type="checkbox"></td></tr>
+    </table><h2>Ma'am Weng2 – ₱10,000 (12 Months)</h2>
+<table>
+  <tr><th>Month</th><th>Amount</th><th>Paid</th></tr>
+  <tr><td>Month 1</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 2</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 3</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 4</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 5</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 6</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 7</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 8</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 9</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 10</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 11</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 12</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+</table>
+
+<h2>Mader – ₱10,000 (12 Months)</h2>
+<table>
+  <tr><th>Month</th><th>Amount</th><th>Paid</th></tr>
+  <tr><td>Month 1</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 2</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 3</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 4</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 5</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 6</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 7</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 8</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 9</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 10</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 11</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+  <tr><td>Month 12</td><td>₱1,433.33</td><td><input type="checkbox"></td></tr>
+</table>
+
+  </div>
+</body>
+  </html>
