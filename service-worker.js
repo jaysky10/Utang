@@ -1,5 +1,9 @@
 const CACHE_NAME = 'loan-app-cache-v1';
-const URLS_TO_CACHE = ['index.html', 'manifest.json'];
+const URLS_TO_CACHE = [
+  '/Utang/index.html',
+  '/Utang/manifest.json',
+  '/Utang/icon.png'
+];
 
 self.addEventListener('install', event => {
   event.waitUntil(
