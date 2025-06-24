@@ -1,11 +1,7 @@
 {
   "name": "Loan Checklist",
   "short_name": "LoanApp",
-  const URLS_TO_CACHE = [
-  '/Utang/index.html',
-  '/Utang/manifest.json',
-  '/Utang/icon.png'
-];
+  "start_url": "/Utang/index.html",
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#121212",
